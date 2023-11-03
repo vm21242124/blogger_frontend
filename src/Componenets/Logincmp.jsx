@@ -1,18 +1,24 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setuser } from "../ReduxSetup/UserSlice";
+
 
 export const Logincmp=()=>{
     const nav=useNavigate();
     const [user,setUser]=useState([])
     const [email,setEmail]=useState("")
     const [password,setPass]=useState("")
+    const dispatch=useDispatch()
     const handleLogin=(e)=>{
       e.preventDefault();
       axios.post("/auth/login",{email,password}).then((res)=>{
         if(res.status===200){
           nav("/")
-          console.log(res.data);
+       
+          dispatch(setuser(res.data))
+        
         }
       }).catch((e)=>console.log(e.message))
       // console.log(email,password);

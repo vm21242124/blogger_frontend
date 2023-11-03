@@ -9,6 +9,8 @@ import PostPage from './pages/PostPage.jsx'
 import axios from 'axios'
 import SinglePostPage from './pages/SinglePostPage.jsx'
 import AuthenticationPage from './pages/Authpage/AuthenticationPage.jsx'
+import { Provider } from 'react-redux'
+import store from './ReduxSetup/Store'
 
 axios.defaults.baseURL="http://localhost:8080"
 
@@ -35,8 +37,10 @@ const router = createBrowserRouter([{
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
 
+<Provider store={store}>
 
     <RouterProvider router={router} />
+</Provider>
 
   </React.StrictMode>,
 )
