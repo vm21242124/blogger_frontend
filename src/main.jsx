@@ -13,7 +13,7 @@ import { Provider } from 'react-redux'
 import store from './ReduxSetup/Store'
 
 axios.defaults.baseURL="http://localhost:8080"
-
+axios.defaults.withCredentials=true;
 
 const router = createBrowserRouter([{
   path: "/",

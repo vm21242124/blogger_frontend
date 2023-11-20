@@ -1,0 +1,59 @@
+.profile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.user {
+  height: 40%;
+  width: 70%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  // flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid #c0bfbf;
+  padding-bottom: 20px;
+}
+.profilephoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  span {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Times New Roman", Times, serif;
+  }
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 12px;
+    margin-top: 8px;
+    opacity: 70%;
+    padding-left: 10px;
+  }
+}
+.userfollowers {
+  width: 20%;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  span {
+    font-size: 15px;
+    opacity: 70%;
+    text-transform: capitalize;
+  }
+}
+.userfollowers:hover {
+  opacity: 70%;
+}
