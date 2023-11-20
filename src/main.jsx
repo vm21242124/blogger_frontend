@@ -10,7 +10,9 @@ import axios from 'axios'
 import SinglePostPage from './pages/SinglePostPage.jsx'
 import AuthenticationPage from './pages/Authpage/AuthenticationPage.jsx'
 import { Provider } from 'react-redux'
-import store from './ReduxSetup/Store'
+import {store ,persitor}from './ReduxSetup/Store'
+import {PersistGate} from "redux-persist/integration/react"
+
 
 axios.defaults.baseURL="http://localhost:8080"
 axios.defaults.withCredentials=true;
@@ -38,8 +40,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
 
 <Provider store={store}>
+  <PersistGate loading={false} persistor={persitor}>
 
     <RouterProvider router={router} />
+  </PersistGate>
+
 </Provider>
 
   </React.StrictMode>,
