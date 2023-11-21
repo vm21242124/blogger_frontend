@@ -10,14 +10,17 @@ import Searchcmp from '../../Componenets/Searchcmp'
 import Profile from '../../Componenets/profile/Profile'
 import NewPost from '../../Componenets/newpost/NewPost'
 import Message from '../../Componenets/Message'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { setActiveComp } from '../../ReduxSetup/ActiveComponentSlice'
 
 
 const HomePage = () => {
   const [display, setDisplay] = useState("feed")
-  // const [active,setActive]=useState(false)
+  const dispatch=useDispatch()
+  const activecmp=useSelector((state)=>state.activecomponent)
+ 
   let Comp = <Feed />
-  switch (display) {
+  switch (activecmp) {
     case "search":
       Comp = <Searchcmp />
       break;
@@ -41,19 +44,20 @@ const HomePage = () => {
 
       <div className="leftnav">
         {/* <h1 className="logo">Instagram</h1> */}
-        <div className={display === "feed" ? "active" : "navicon"} onClick={() => setDisplay("feed")}><BiHomeAlt className='ic' />
+        <div className={display === "feed" ? "active" : "navicon"} onClick={() => {setDisplay("feed");dispatch(setActiveComp("feed"))}}><BiHomeAlt className='ic' />
           <span >Home</span></div>
-        <div className={display === "search" ? "active" : "navicon"} onClick={() => setDisplay("search")}><BiSearch className='ic' /><span>Search</span></div>
-        <div className={display === "profile" ? "active" : "navicon"} onClick={() => setDisplay("profile")}><CgProfile className='ic' /><span>Profile</span></div>
-        <div className={display === "newpost" ? "active" : "navicon"} onClick={() => setDisplay("newpost")} ><FiPlusSquare className='ic' /><span>New Post</span></div>
-        <div className={display === "message" ? "active" : "navicon"} onClick={() => setDisplay("message")} ><PiMessengerLogoBold className='ic' /><span>Message</span></div>
+        <div className={display === "search" ? "active" : "navicon"} onClick={() =>{setDisplay("search");dispatch(setActiveComp("search"))}}><BiSearch className='ic' /><span>Search</span></div>
+        <div className={display === "profile" ? "active" : "navicon"} onClick={() => {setDisplay("profile");dispatch(setActiveComp("profile"))}}><CgProfile className='ic' /><span>Profile</span></div>
+        <div className={display === "newpost" ? "active" : "navicon"} onClick={() => {setDisplay("newpost");dispatch(setActiveComp("newpost"))}} ><FiPlusSquare className='ic' /><span>New Post</span></div>
+        <div className={display === "message" ? "active" : "navicon"} onClick={() => {setDisplay("message");dispatch(setActiveComp("message"))}} ><PiMessengerLogoBold className='ic' /><span>Message</span></div>
       </div>
       <div className={display==="feed"?"middle":"middle1"}>
 
         {Comp}
+
       </div>
       {display === "feed" ? <div className="rightnav">
-        <RightNav />
+        <RightNav setDisplay={setDisplay} />
       </div> : ""}
     </div>
   )
