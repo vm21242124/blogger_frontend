@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom'
 
 
 const Profile = () => {
-  
-  // const [user, setUser] = useState([])
   const user=useSelector(state=>state.user)
   const nav=useNavigate()
   const [posts, setPosts] = useState([])
@@ -16,6 +14,7 @@ const Profile = () => {
   const [followers,setFollowers]=useState([])
   const [following,setFollowing]=useState([])
   const [showpost, setShowpost] = useState(false)
+
   const [imgname,setImgname]=useState("default.jpg")
   useEffect(()=>{
     if(user===null){
@@ -83,5 +82,6 @@ const PoppedPost=({showpost,setShowpost,imgname})=>{
         </div> 
   )
 }
+
 
 export default Profile

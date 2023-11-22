@@ -19,8 +19,7 @@ axios.defaults.withCredentials=true;
 
 const router = createBrowserRouter([{
   path: "/",
-  element: <App />,
-  errorElement: <ErrorPage />
+  element: <App />
 }, {
   path: "/user",
   element: <UserRegister />,
